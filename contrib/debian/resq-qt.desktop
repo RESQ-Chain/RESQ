@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RESQ
+Comment=RESQ P2P Cryptocurrency
+Comment[fr]=RESQ, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=RESQ, eşten eşe kriptografik sanal para birimi
+Exec=resq-qt %u
+Terminal=false
+Type=Application
+Icon=resq128
+MimeType=x-scheme-handler/resq;
+Categories=Office;Finance;

@@ -1,0 +1,111 @@
+src/miner.cpp:            if (pwallet->CreateCoinStake(*pwallet, pblock->nBits, nSearchTime - nLastCoinStakeSearchTime, txCoinStake, nTxNewTime)) {
+src/miner.cpp:                fMintableCoins = pwallet->MintableCoins();
+src/miner.cpp:            while (vNodes.empty() || pwallet->IsLocked() || !fMintableCoins || (pwallet->GetBalance() > 0 && nReserveBalance >= pwallet->GetBalance()) || !masternodeSync.IsSynced()) {
+src/miner.cpp:                        fMintableCoins = pwallet->MintableCoins();
+src/miner.cpp:                if (GetTime() - mapHashedBlocks[chainActive.Tip()->nHeight] < max(pwallet->nHashInterval, (unsigned int)1)) // wait half of the nHashDrift with max wait of 3 minutes
+src/miner.cpp:                if (!pwallet->GetZerocoinKey(bnSerial, key)) {
+src/walletdb.cpp:    LOCK(pwallet->cs_wallet);
+src/walletdb.cpp:    for (map<uint256, CWalletTx>::iterator it = pwallet->mapWallet.begin(); it != pwallet->mapWallet.end(); ++it) {
+src/walletdb.cpp:    int64_t& nOrderPosNext = pwallet->nOrderPosNext;
+src/walletdb.cpp:            ssValue >> pwallet->mapAddressBook[CBitcoinAddress(strAddress).Get()].name;
+src/walletdb.cpp:            ssValue >> pwallet->mapAddressBook[CBitcoinAddress(strAddress).Get()].purpose;
+src/walletdb.cpp:            pwallet->AddToWallet(wtx, true);
+src/walletdb.cpp:                pwallet->LoadWatchOnly(script);
+src/walletdb.cpp:            pwallet->nTimeFirstKey = 1;
+src/walletdb.cpp:                pwallet->LoadMultiSig(script);
+src/walletdb.cpp:            pwallet->nTimeFirstKey = 1;
+src/walletdb.cpp:            if (!pwallet->LoadKey(key, vchPubKey)) {
+src/walletdb.cpp:            if (pwallet->mapMasterKeys.count(nID) != 0) {
+src/walletdb.cpp:            pwallet->mapMasterKeys[nID] = kMasterKey;
+src/walletdb.cpp:            if (pwallet->nMasterKeyMaxID < nID)
+src/walletdb.cpp:                pwallet->nMasterKeyMaxID = nID;
+src/walletdb.cpp:            if (!pwallet->LoadCryptedKey(vchPubKey, vchPrivKey)) {
+src/walletdb.cpp:            pwallet->LoadKeyMetadata(vchPubKey, keyMeta);
+src/walletdb.cpp:            if (!pwallet->nTimeFirstKey ||
+src/walletdb.cpp:                (keyMeta.nCreateTime < pwallet->nTimeFirstKey))
+src/walletdb.cpp:                pwallet->nTimeFirstKey = keyMeta.nCreateTime;
+src/walletdb.cpp:            ssValue >> pwallet->vchDefaultKey;
+src/walletdb.cpp:            pwallet->setKeyPool.insert(nIndex);
+src/walletdb.cpp:            if (pwallet->mapKeyMetadata.count(keyid) == 0)
+src/walletdb.cpp:                pwallet->mapKeyMetadata[keyid] = CKeyMetadata(keypool.nTime);
+src/walletdb.cpp:            if (!pwallet->LoadCScript(script)) {
+src/walletdb.cpp:            ssValue >> pwallet->nOrderPosNext;
+src/walletdb.cpp:            ssValue >> pwallet->nStakeSplitThreshold;
+src/walletdb.cpp:                pwallet->vMultiSend.push_back(pMultiSend);
+src/walletdb.cpp:            pwallet->fMultiSendStake = pSettings.first.first;
+src/walletdb.cpp:            pwallet->fMultiSendMasternodeReward = pSettings.first.second;
+src/walletdb.cpp:            pwallet->nLastMultiSendHeight = pSettings.second;
+src/walletdb.cpp:            pwallet->vDisabledAddresses.push_back(strDisabledAddress);
+src/walletdb.cpp:            pwallet->fCombineDust = pSettings.first;
+src/walletdb.cpp:            pwallet->nAutoCombineThreshold = pSettings.second;
+src/walletdb.cpp:            if (!pwallet->LoadDestData(CBitcoinAddress(strAddress).Get(), strKey, strValue)) {
+src/walletdb.cpp:    pwallet->vchDefaultKey = CPubKey();
+src/walletdb.cpp:        LOCK(pwallet->cs_wallet);
+src/walletdb.cpp:            pwallet->LoadMinVersion(nMinVersion);
+src/walletdb.cpp:        pwallet->nTimeFirstKey = 1; // 0 would be considered 'no value'
+src/walletdb.cpp:        WriteTx(hash, pwallet->mapWallet[hash]);
+src/walletdb.cpp:    pwallet->laccentries.clear();
+src/walletdb.cpp:    ListAccountCreditDebit("*", pwallet->laccentries);
+src/walletdb.cpp:    BOOST_FOREACH(CAccountingEntry& entry, pwallet->laccentries) {
+src/walletdb.cpp:        pwallet->wtxOrdered.insert(make_pair(entry.nOrderPos, CWallet::TxPair((CWalletTx*)0, &entry)));
+src/walletdb.cpp:    pwallet->vchDefaultKey = CPubKey();
+src/walletdb.cpp:        LOCK(pwallet->cs_wallet);
+src/walletdb.cpp:            pwallet->LoadMinVersion(nMinVersion);
+src/wallet.cpp:        LOCK(pwallet->cs_wallet);
+src/wallet.cpp:                map<uint256, int>::const_iterator mi = pwallet->mapRequestCount.find(hashBlock);
+src/wallet.cpp:                if (mi != pwallet->mapRequestCount.end())
+src/wallet.cpp:            map<uint256, int>::const_iterator mi = pwallet->mapRequestCount.find(GetHash());
+src/wallet.cpp:            if (mi != pwallet->mapRequestCount.end()) {
+src/wallet.cpp:                    map<uint256, int>::const_iterator mi = pwallet->mapRequestCount.find(hashBlock);
+src/wallet.cpp:                    if (mi != pwallet->mapRequestCount.end())
+src/wallet.cpp:            nDebitCached = pwallet->GetDebit(*this, ISMINE_SPENDABLE);
+src/wallet.cpp:            nWatchDebitCached = pwallet->GetDebit(*this, ISMINE_WATCH_ONLY);
+src/wallet.cpp:            nCreditCached = pwallet->GetCredit(*this, ISMINE_SPENDABLE);
+src/wallet.cpp:            nWatchCreditCached = pwallet->GetCredit(*this, ISMINE_WATCH_ONLY);
+src/wallet.cpp:        nImmatureCreditCached = pwallet->GetCredit(*this, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (!pwallet->IsSpent(hashTx, i)) {
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
+src/wallet.cpp:        const int rounds = pwallet->GetInputObfuscationRounds(vin);
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i) || !pwallet->IsDenominated(vin)) continue;
+src/wallet.cpp:        const int rounds = pwallet->GetInputObfuscationRounds(vin);
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
+src/wallet.cpp:        nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i)) continue;
+src/wallet.cpp:        if (pwallet->IsLockedCoin(hashTx, i)) {
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i) || !pwallet->IsDenominatedAmount(vout[i].nValue)) continue;
+src/wallet.cpp:        nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
+src/wallet.cpp:        nImmatureWatchCreditCached = pwallet->GetCredit(*this, ISMINE_WATCH_ONLY);
+src/wallet.cpp:        if (!pwallet->IsSpent(GetHash(), i)) {
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
+src/wallet.cpp:        if (pwallet->IsSpent(hashTx, i)) continue;
+src/wallet.cpp:        if (pwallet->IsLockedCoin(hashTx, i)) {
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
+src/wallet.cpp:            nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
+src/wallet.cpp:        isminetype fIsMine = pwallet->IsMine(txout);
+src/wallet.cpp:            if (pwallet->IsChange(txout))
+src/wallet.cpp:        LOCK(pwallet->cs_wallet);
+src/wallet.cpp:            if (pwallet->mapAddressBook.count(r.destination)) {
+src/wallet.cpp:                map<CTxDestination, CAddressBookData>::const_iterator mi = pwallet->mapAddressBook.find(r.destination);
+src/wallet.cpp:                if (mi != pwallet->mapAddressBook.end() && (*mi).second.name == strAccount)
+src/wallet.cpp:    return CWalletDB(pwallet->strWalletFile).WriteTx(GetHash(), *this);
+src/wallet.cpp:        result = pwallet->GetConflicts(myHash);
+src/wallet.cpp:        pwallet->ReserveKeyFromKeyPool(nIndex, keypool);
+src/wallet.cpp:        pwallet->KeepKey(nIndex);
+src/wallet.cpp:        pwallet->ReturnKey(nIndex);
+src/stakeinput.cpp:    if (!pwallet->GetMintFromStakeHash(hashSerial, mint))
+src/stakeinput.cpp:    if (!pwallet->MintToTxIn(mint, nSecurityLevel, hashTxOut, txIn, receipt, libzerocoin::SpendType::STAKE, GetIndexFrom()))
+src/stakeinput.cpp:    if (!pwallet->CreateZRESQOutPut(denomStaked, outReward, dMint))
+src/stakeinput.cpp:    if (!pwallet->DatabaseMint(dMint))
+src/stakeinput.cpp:        if (!pwallet->CreateZRESQOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
+src/stakeinput.cpp:        if (!pwallet->DatabaseMint(dMintReward))
+src/stakeinput.cpp:    CzRESQTracker* zresqTracker = pwallet->zresqTracker.get();
+src/stakeinput.cpp:        if (!pwallet->GetKey(keyID, key))
+src/stakeinput.cpp:    if (nTotal / 2 > (CAmount)(pwallet->nStakeSplitThreshold * COIN))
+src/wallet.h:        nChangeCached = pwallet->GetChange(*this);
+src/wallet.h:            const CWalletTx* parent = pwallet->GetWalletTx(txin.prevout.hash);
+src/wallet.h:            if (pwallet->IsMine(parentOut) != ISMINE_SPENDABLE)

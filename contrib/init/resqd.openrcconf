@@ -1,0 +1,33 @@
+# /etc/conf.d/resqd: config file for /etc/init.d/resqd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/resq/resq.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/resqd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/resqd.pid"
+
+# Where to write resqd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/resqd"
+
+# User and group to own resqd process
+#BITCOIND_USER="resq"
+#BITCOIND_GROUP="resq"
+
+# Path to resqd executable
+#BITCOIND_BIN="/usr/bin/resqd"
+
+# Nice value to run resqd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BITCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for bitcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITCOIND_SIGTERM_TIMEOUT=60
