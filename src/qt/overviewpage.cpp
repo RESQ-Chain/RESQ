@@ -433,15 +433,15 @@ void OverviewPage::SetLinks()
 {
     ui->labelLinks1->setText("Website:");
     ui->labelLinks2->setText("Explorer:");
-    ui->labelLinks3->setText("Bitcoin Talk:");
+    ui->labelLinks3->setText("Swap Platform:");
     ui->labelLinks4->setText("Discord:");
     ui->labelLinks5->setText("Twitter:");
     ui->labelLinks6->setText("Github:");
 
-    ui->labelLinksUrl1->setText("<a href=\"https://reloadcoin.io\">https://reloadcoin.io</a>");
-    ui->labelLinksUrl2->setText("<a href=\"https://explorer.reloadcoin.io\">https://explorer.reloadcoin.io</a>");
-    ui->labelLinksUrl3->setText("<a href=\"https://bitcointalk.org/index.php?topic=5062987\">https://bitcointalk.org/index.php?topic=5062987</a>");
+    ui->labelLinksUrl1->setText("<a href=\"https://resqchain.org\">https://resqchain.org</a>");
+    ui->labelLinksUrl2->setText("<a href=\"https://explorer.resqchain.org\">https://explorer.resqchain.org</a>");
+    ui->labelLinksUrl3->setText("<a href=\"https://swap.resqchain.org\">https://swap.resqchain.org</a>");
     ui->labelLinksUrl4->setText("<a href=\"https://discord.gg/Xv45rq7\">https://discord.gg/Xv45rq7</a>");
-    ui->labelLinksUrl5->setText("<a href=\"https://twitter.com/ReloadCoin\">https://twitter.com/ReloadCoin</a>");
-    ui->labelLinksUrl6->setText("<a href=\"https://github.com/ReloadCoin\">https://github.com/ReloadCoin</a>");
+    ui->labelLinksUrl5->setText("<a href=\"https://twitter.com/RESQChain\">https://twitter.com/RESQChain</a>");
+    ui->labelLinksUrl6->setText("<a href=\"https://github.com/RESQ-Chain/RESQ\">https://github.com/RESQ-Chain/RESQ</a>");
 }

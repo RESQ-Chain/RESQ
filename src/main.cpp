@@ -1878,7 +1878,7 @@ bool phase10 = nHeight >= 1051201 && nHeight <= 2102400;
   if(phase1)
         nSubsidy = 1 * COIN;
     else if (phase2)
-        nSubsidy = 2520 * COIN;
+        nSubsidy = 1000 * COIN;
    else if (phase3)
         nSubsidy = 2520 * COIN;
     else if (phase4)
@@ -1896,7 +1896,7 @@ bool phase10 = nHeight >= 1051201 && nHeight <= 2102400;
     else if (phase10)
         nSubsidy = 2460 * COIN;
     else
-        nSubsidy = 1100 * COIN;
+        nSubsidy = 0 * COIN;
 
   return nSubsidy;
 }

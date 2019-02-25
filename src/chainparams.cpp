@@ -54,13 +54,13 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("00000b804b3066cb162270a8fdaa19e423b74be2fdd414afc00188e372012985"));
+    (0, uint256("00000b0e300b4cdc8aed6ed5bf6f2e69be0adaff90607c6eece94c4d46183529"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1550435066, // * UNIX timestamp of last checkpoint block
+    1551094283, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    2000        // * estimated number of transactions per day after checkpoint
+    1000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -151,17 +151,17 @@ public:
         nRejectBlockOutdatedMajority = 10260; // 95%
         nToCheckBlockUpgradeMajority = 10800; // Approximate expected amount of blocks in 7 days (1440*7.5)
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // RESQ: 1 day
-        nTargetSpacing = 1 * 60;  // RESQ: 1 minute
+        nTargetTimespan = 1 * 150; // RESQ
+        nTargetSpacing = 1 * 150;  // RESQ: 2.5 minute
         nMaturity = 30;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 11013057170 * COIN;
+        nMaxMoneyOut = 535000000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 250;
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 255;
-        nZerocoinStartTime = 1550880000; // October 17, 2017 4:30:00 AM
+        nZerocoinStartTime = 1551094284; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = INT_MAX; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = INT_MAX; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = INT_MAX; //First block that bad serials emerged
@@ -169,10 +169,10 @@ public:
         nBlockEnforceInvalidUTXO = INT_MAX; //Start enforcing the invalid UTXO's
         nInvalidAmountFiltered = 0*COIN; //Amount of invalid coins filtered through exchanges, that should be considered valid
         nBlockZerocoinV2 = INT_MAX; //!> The block that zerocoin v2 becomes active - roughly Tuesday, May 8, 2018 4:00:00 AM GMT
-        nEnforceNewSporkKey = 1525158000; //!> Sporks signed after (GMT): Tuesday, May 1, 2018 7:00:00 AM GMT must use the new spork key
-        nRejectOldSporkKey = 1527811200; //!> Fully reject old spork key after (GMT): Friday, June 1, 2018 12:00:00 AM
+        nEnforceNewSporkKey = INT_MAX; //!> Sporks signed after (GMT): Tuesday, May 1, 2018 7:00:00 AM GMT must use the new spork key
+        nRejectOldSporkKey = INT_MAX; //!> Fully reject old spork key after (GMT): Friday, June 1, 2018 12:00:00 AM
 
-        const char* pszTimestamp = "RESQ - Reload Testnet is Born";
+        const char* pszTimestamp = "RESQ - For when the Devs have left the building";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -183,22 +183,22 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1550435066;
+        genesis.nTime = 1551094283;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 3795377;
+        genesis.nNonce = 4164826;
         // MineGenesis(genesis);
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000b804b3066cb162270a8fdaa19e423b74be2fdd414afc00188e372012985"));
-        assert(genesis.hashMerkleRoot == uint256("0x34764c95d84ea01ba4b15a6e189e88127410288a5aa347399f50c8dfe251afe1"));
+        assert(hashGenesisBlock == uint256("0x00000b0e300b4cdc8aed6ed5bf6f2e69be0adaff90607c6eece94c4d46183529"));
+        assert(genesis.hashMerkleRoot == uint256("0x07b59f5058999c9f11d50df503dd46b3ccc279f0693f2620fa511ece8541a867"));
 
-        vSeeds.push_back(CDNSSeedData("Seed1", "seed1.reloadcoin.io"));
-        vSeeds.push_back(CDNSSeedData("Seed2", "seed2.reloadcoin.io"));
-        vSeeds.push_back(CDNSSeedData("Seed3", "seed3.reloadcoin.io"));
-        vSeeds.push_back(CDNSSeedData("Seed4", "seed4.reloadcoin.io"));
-        vSeeds.push_back(CDNSSeedData("Explorer", "explorer.reloadcoin.io"));
+        vSeeds.push_back(CDNSSeedData("Seed1", "seed1.resqchain.org"));
+        vSeeds.push_back(CDNSSeedData("Seed2", "seed2.resqchain.org"));
+        vSeeds.push_back(CDNSSeedData("Seed3", "seed3.resqchain.org"));
+        vSeeds.push_back(CDNSSeedData("Seed4", "seed4.resqchain.org"));
+        vSeeds.push_back(CDNSSeedData("Explorer", "explorer.resqchain.org"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 122);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 120);
 		    base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
 		    base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 153);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
@@ -208,7 +208,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = false;
+        fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
