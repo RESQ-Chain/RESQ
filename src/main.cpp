@@ -1863,44 +1863,34 @@ int64_t GetBlockValue(int nHeight)
     ///Pow Phase
 bool phase1 = nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK();
     //POS Starts here
-bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 5000;
-bool phase3 = nHeight >= 5001 && nHeight <= 14400;
-bool phase4 = nHeight >= 14401 && nHeight <= 43200;
-bool phase5 = nHeight >= 43201 && nHeight <= 86400;
-bool phase6 = nHeight >= 86401 && nHeight <= 259200;
-bool phase7 = nHeight >= 259201 && nHeight <= 1051200;
-bool phase8 = nHeight >= 1051201 && nHeight <= 1576800;
-bool phase9 = nHeight >= 1576801 && nHeight <= 1051200;
-bool phase10 = nHeight >= 1051201 && nHeight <= 2102400;
+bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 500;
+bool phase3 = nHeight >= 501 && nHeight <= 280000;
+bool phase4 = nHeight >= 280001 && nHeight <= 380000;
+bool phase5 = nHeight >= 380001 && nHeight <= 580000;
+bool phase6 = nHeight >= 580001 && nHeight <= 780000;
+bool phase7 = nHeight >= 780001 && nHeight <= 880000;
 
   int64_t nSubsidy = 1 * COIN;
-    if (nHeight == 1) return 4565196000 * COIN;
+    if (nHeight == 1) return 132659250 * COIN;
   if(phase1)
         nSubsidy = 1 * COIN;
     else if (phase2)
-        nSubsidy = 1000 * COIN;
+        nSubsidy = 10 * COIN;
    else if (phase3)
-        nSubsidy = 2520 * COIN;
+        nSubsidy = 720 * COIN;
     else if (phase4)
-        nSubsidy = 20520 * COIN;
+        nSubsidy = 540 * COIN;
     else if (phase5)
-        nSubsidy = 15400 * COIN;
+        nSubsidy = 360 * COIN;
     else if (phase6)
-        nSubsidy = 9590 * COIN;
+        nSubsidy = 180 * COIN;
     else if (phase7)
-        nSubsidy = 6040 * COIN;
-    else if (phase8)
-        nSubsidy = 3780 * COIN;
-    else if (phase9)
-        nSubsidy = 2460 * COIN;
-    else if (phase10)
-        nSubsidy = 2460 * COIN;
+        nSubsidy = 90 * COIN;
     else
         nSubsidy = 0 * COIN;
 
   return nSubsidy;
 }
-
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZRESQStake)
 {
@@ -1914,8 +1904,8 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
   // initial blocks have no mn reward
   if (nHeight <= 165) {
         ret = blockValue  / 100 * 0;
-  } else if (nHeight > 165) {
-      ret = blockValue  / 100 * 65; //80%
+  } else if (nHeight > 501) {
+      ret = blockValue  / 100 * 75; //75%
 
   }
 

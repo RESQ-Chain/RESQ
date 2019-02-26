@@ -147,9 +147,9 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 20; // RESQ starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = INT_MAX;
         nMaxReorganizationDepth = 100;
-        nEnforceBlockUpgradeMajority = 8100; // 75%
-        nRejectBlockOutdatedMajority = 10260; // 95%
-        nToCheckBlockUpgradeMajority = 10800; // Approximate expected amount of blocks in 7 days (1440*7.5)
+        nEnforceBlockUpgradeMajority = 3024; // 75%
+        nRejectBlockOutdatedMajority = 3831; // 95%
+        nToCheckBlockUpgradeMajority = 4034; // Approximate expected amount of blocks in 7 days (1440*7.5)
         nMinerThreads = 0;
         nTargetTimespan = 1 * 150; // RESQ
         nTargetSpacing = 1 * 150;  // RESQ: 2.5 minute
@@ -162,7 +162,7 @@ public:
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 255;
         nZerocoinStartTime = 1551094284; // October 17, 2017 4:30:00 AM
-        nBlockEnforceSerialRange = INT_MAX; //Enforce serial range starting this block
+        nBlockEnforceSerialRange = 255; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = INT_MAX; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = INT_MAX; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = INT_MAX; //Last valid accumulator checkpoint
