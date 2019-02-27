@@ -1,15 +1,17 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2015-2019 The PivX developers
+// Copyright (c) 2018 The PHORE developers
 // Copyright (c) 2018-2019 The RESQ developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_WALLETVIEW_H
-#define BITCOIN_QT_WALLETVIEW_H
+#ifndef RESQ_QT_WALLETVIEW_H
+#define RESQ_QT_WALLETVIEW_H
 
 #include "amount.h"
 #include "askpassphrasedialog.h"
 #include "masternodelist.h"
+#include "proposallist.h"
 
 #include <QStackedWidget>
 #include <ui_interface.h>
@@ -71,8 +73,10 @@ private:
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;
     MasternodeList* masternodeListPage;
+    QWidget* proposalListPage;
 
     TransactionView* transactionView;
+    ProposalList* proposalList;
 
     QProgressDialog* progressDialog;
     QLabel* transactionSum;
@@ -88,6 +92,8 @@ public slots:
     void gotoBlockExplorerPage();
     /** Switch to privacy page */
     void gotoPrivacyPage();
+    /** Switch to proposal page */
+    void gotoProposalPage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
@@ -147,4 +153,4 @@ signals:
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
 };
 
-#endif // BITCOIN_QT_WALLETVIEW_H
+#endif // RESQ_QT_WALLETVIEW_H

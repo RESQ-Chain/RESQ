@@ -102,7 +102,7 @@ public:
 };
 
 //
-// The Masternode Class. For managing the Obfuscation process. It contains the input of the 15000000 RESQ, signature to prove
+// The Masternode Class. For managing the Obfuscation process. It contains the input of the 300000 RESQ, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
 class CMasternode
