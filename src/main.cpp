@@ -1871,7 +1871,7 @@ bool phase6 = nHeight >= 580001 && nHeight <= 780000;
 bool phase7 = nHeight >= 780001 && nHeight <= 880000;
 
   int64_t nSubsidy = 1 * COIN;
-    if (nHeight == 1) return 132659250 * COIN;
+    if (nHeight == 1) return 140763250 * COIN;
   if(phase1)
         nSubsidy = 1 * COIN;
     else if (phase2)

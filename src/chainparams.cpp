@@ -54,10 +54,10 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("00000b0e300b4cdc8aed6ed5bf6f2e69be0adaff90607c6eece94c4d46183529"));
+    (0, uint256("0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1551094283, // * UNIX timestamp of last checkpoint block
+    1551251803, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     1000        // * estimated number of transactions per day after checkpoint
@@ -96,36 +96,7 @@ libzerocoin::ZerocoinParams* CChainParams::Zerocoin_Params(bool useModulusV1) co
 
     return &ZCParamsDec;
 }
-/* void MineGenesis(CBlock genesis)
-{
-    printf("Searching for genesis block...\n");
-    // This will figure out a valid hash and Nonce if you're
-    // creating a different genesis block:
-    uint256 hashTarget = ~uint256(0) >> 20;
-    uint256 thash;
-    while(true)
-    {
-        thash = genesis.GetHash();
-        if (thash <= hashTarget)
-            break;
-        if ((genesis.nNonce & 0xFFF) == 0)
-        {
-            printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
-        }
-        ++genesis.nNonce;
-        if (genesis.nNonce == 0)
-        {
-            printf("NONCE WRAPPED, incrementing time\n");
-            ++genesis.nTime;
-        }
-    }
-    printf("block.nTime = %u \n", genesis.nTime);
-    printf("block.nNonce = %u \n", genesis.nNonce);
-    printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-    printf("block.merkle = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-    std::fflush(stdout);
-}
-*/
+
 class CMainParams : public CChainParams
 {
 public:
@@ -161,7 +132,7 @@ public:
         nLastPOWBlock = 250;
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 255;
-        nZerocoinStartTime = 1551094284; // October 17, 2017 4:30:00 AM
+        nZerocoinStartTime = 1551251804; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = 255; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = INT_MAX; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = INT_MAX; //First block that bad serials emerged
@@ -183,13 +154,12 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1551094283;
+        genesis.nTime = 1551251803;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 4164826;
-        // MineGenesis(genesis);
+        genesis.nNonce = 5208531;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000b0e300b4cdc8aed6ed5bf6f2e69be0adaff90607c6eece94c4d46183529"));
+        assert(hashGenesisBlock == uint256("0x0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"));
         assert(genesis.hashMerkleRoot == uint256("0x07b59f5058999c9f11d50df503dd46b3ccc279f0693f2620fa511ece8541a867"));
 
         vSeeds.push_back(CDNSSeedData("Seed1", "seed1.resqchain.org"));
