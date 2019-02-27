@@ -11,6 +11,7 @@ src/resqd
 src/resq-cli
 src/resq-tx
 src/test/test_resq
+src/test/data/*.json.h
 src/qt/test/test_resq-qt
 
 # autoreconf
