@@ -21,7 +21,7 @@ bool fTestNet = false; //Params().NetworkID() == CBaseChainParams::TESTNET;
 // Modifier interval: time to elapse before new modifier is computed
 // Set to 3-hour for production network and 20-minute for test network
 unsigned int nModifierInterval;
-int nStakeTargetSpacing = 150;
+int nStakeTargetSpacing = 60;
 unsigned int getIntervalVersion(bool fTestNet)
 {
     if (fTestNet)
@@ -32,7 +32,10 @@ unsigned int getIntervalVersion(bool fTestNet)
 
 // Hard checkpoints of stake modifiers to ensure they are deterministic
 static std::map<int, unsigned int> mapStakeModifierCheckpoints =
-    boost::assign::map_list_of(1, 0x03887083u);
+    boost::assign::map_list_of(1, 0x03887083u)
+    (100, 0x1d532f76u)
+    (200, 0x56003004u)
+    (300, 0xb1e63356u);
 
 // Get time weight
 int64_t GetWeight(int64_t nIntervalBeginning, int64_t nIntervalEnd)

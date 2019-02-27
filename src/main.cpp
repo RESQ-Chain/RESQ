@@ -1902,7 +1902,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     }
 
   // initial blocks have no mn reward
-  if (nHeight <= 165) {
+  if (nHeight <= 501) {
         ret = blockValue  / 100 * 0;
   } else if (nHeight > 501) {
       ret = blockValue  / 100 * 75; //75%
