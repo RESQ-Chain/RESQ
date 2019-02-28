@@ -54,8 +54,8 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"))
-    (400, uint256("b3ad933a819f14a09e417fe4f594652aec76f76e7a04c5a6f285b9896c1b56c9"));
+    (0, uint256("0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"));
+
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1551287355, // * UNIX timestamp of last checkpoint block
@@ -134,7 +134,7 @@ public:
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 255;
         nZerocoinStartTime = 1551251804; // October 17, 2017 4:30:00 AM
-        nBlockEnforceSerialRange = 255; //Enforce serial range starting this block
+        nBlockEnforceSerialRange = INT_MAX; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = INT_MAX; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = INT_MAX; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = INT_MAX; //Last valid accumulator checkpoint
