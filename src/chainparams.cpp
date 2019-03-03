@@ -54,12 +54,14 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"));
+    (0, uint256("0000044a7c2f240927bed3fe5875ac2c53e59b483ff528cb43a28fd8b86da77d"))
+    (125, uint256("00000005a3e5686605f6b4892992d38c41c3977a76f9a39caa8371ce12b18663"))
+    (450, uint256("f5234a89e75811919ff101a81ac7c559a3e493c1be26d7b67dba35eecc519c61"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1551287355, // * UNIX timestamp of last checkpoint block
-    661,          // * total number of transactions between genesis and last checkpoint
+    1551602587, // * UNIX timestamp of last checkpoint block
+    703,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     1000        // * estimated number of transactions per day after checkpoint
 };
@@ -133,7 +135,7 @@ public:
         nLastPOWBlock = 250;
         nModifierUpdateBlock = 1;
         nZerocoinStartHeight = 255;
-        nZerocoinStartTime = 1551251804; // October 17, 2017 4:30:00 AM
+        nZerocoinStartTime = 1551533012; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = INT_MAX; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = INT_MAX; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = INT_MAX; //First block that bad serials emerged
@@ -155,12 +157,12 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1551251803;
+        genesis.nTime = 1551533011;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 5208531;
+        genesis.nNonce = 5506778;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000027edee5bfdd62a8d5db989ed5bccf68b1ed5736f13edd01a7bfb6346162"));
+        assert(hashGenesisBlock == uint256("0x0000044a7c2f240927bed3fe5875ac2c53e59b483ff528cb43a28fd8b86da77d"));
         assert(genesis.hashMerkleRoot == uint256("0x07b59f5058999c9f11d50df503dd46b3ccc279f0693f2620fa511ece8541a867"));
 
         vSeeds.push_back(CDNSSeedData("Seed1", "seed1.resqchain.org"));
