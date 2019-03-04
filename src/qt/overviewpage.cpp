@@ -441,7 +441,7 @@ void OverviewPage::SetLinks()
     ui->labelLinksUrl1->setText("<a href=\"https://resqchain.org\">https://resqchain.org</a>");
     ui->labelLinksUrl2->setText("<a href=\"https://explorer.resqchain.org\">https://explorer.resqchain.org</a>");
     ui->labelLinksUrl3->setText("<a href=\"https://swap.resqchain.org\">https://swap.resqchain.org</a>");
-    ui->labelLinksUrl4->setText("<a href=\"https://discord.gg/Xv45rq7\">https://discord.gg/Xv45rq7</a>");
+    ui->labelLinksUrl4->setText("<a href=\"https://discord.resqchain.org\">https://discord.resqchain.org</a>");
     ui->labelLinksUrl5->setText("<a href=\"https://twitter.com/RESQChain\">https://twitter.com/RESQChain</a>");
     ui->labelLinksUrl6->setText("<a href=\"https://github.com/RESQ-Chain/RESQ\">https://github.com/RESQ-Chain/RESQ</a>");
 }
