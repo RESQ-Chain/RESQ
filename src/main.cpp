@@ -1864,14 +1864,14 @@ int64_t GetBlockValue(int nHeight)
 bool phase1 = nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK();
     //POS Starts here
 bool phase2 = nHeight > Params().LAST_POW_BLOCK() && nHeight <= 500;
-bool phase3 = nHeight >= 501 && nHeight <= 280000;
-bool phase4 = nHeight >= 280001 && nHeight <= 380000;
-bool phase5 = nHeight >= 380001 && nHeight <= 580000;
-bool phase6 = nHeight >= 580001 && nHeight <= 780000;
-bool phase7 = nHeight >= 780001 && nHeight <= 880000;
+bool phase3 = nHeight >= 501 && nHeight <= 275000;
+bool phase4 = nHeight >= 275001 && nHeight <= 375000;
+bool phase5 = nHeight >= 375001 && nHeight <= 575000;
+bool phase6 = nHeight >= 575001 && nHeight <= 775000;
+bool phase7 = nHeight >= 775001 && nHeight <= 875000;
 
   int64_t nSubsidy = 1 * COIN;
-    if (nHeight == 1) return 140763250 * COIN;
+    if (nHeight == 1) return 144762450 * COIN;
   if(phase1)
         nSubsidy = 1 * COIN;
     else if (phase2)

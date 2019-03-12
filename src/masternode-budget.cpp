@@ -921,15 +921,15 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
 
     //get block value and calculate from that
     CAmount nSubsidy = 0;
-    if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= 180000)
+    if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= 175000)
         nSubsidy = 80 * COIN;
-    else if (nHeight > 180000 && nHeight <= 380000)
+    else if (nHeight > 175000 && nHeight <= 375000)
         nSubsidy = 60 * COIN;
-    else if (nHeight > 380000 && nHeight <= 580000)
+    else if (nHeight > 375000 && nHeight <= 575000)
         nSubsidy = 40 * COIN;
-    else if (nHeight > 580000 && nHeight <= 780000)
+    else if (nHeight > 575000 && nHeight <= 775000)
         nSubsidy = 20 * COIN;
-    else if (nHeight > 780000 && nHeight <= 880000)
+    else if (nHeight > 775000 && nHeight <= 875000)
         nSubsidy = 10 * COIN;
     else
         nSubsidy = 0 * COIN;
@@ -954,7 +954,7 @@ void CBudgetManager::NewBlock()
     // incremental sync with our peers
     if (masternodeSync.IsSynced()) {
         LogPrint("mnbudget","CBudgetManager::NewBlock - incremental sync started\n");
-        if (chainActive.Height() % 1440 == rand() % 1440) {
+        if (chainActive.Height() % 576 == rand() % 576) {
             ClearSeen();
             ResetSync();
         }
