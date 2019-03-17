@@ -1,7 +1,7 @@
 RESQ Core Official repository
 =============================
 
-[![Build Status](https://travis-ci.org/RESQ-Chain/RESQ.svg?branch=master)](https://travis-ci.org/RESQ-Chain/RESQ) [![GitHub version](https://badge.fury.io/gh/RESQ-Project%2FRESQ.svg)](https://badge.fury.io/gh/RESQ-Project%2FRESQ)
+[![Build Status](https://travis-ci.org/RESQ-Chain/RESQ.svg?branch=master)](https://travis-ci.org/RESQ-Chain/RESQ) [![GitHub version](https://badge.fury.io/gh/RESQ-Chain%2FRESQ.svg)](https://badge.fury.io/gh/RESQ-Chain%2FRESQ)
 
 RESQ is an open source crypto-currency
 
