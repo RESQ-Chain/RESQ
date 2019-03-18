@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef RESQ_QT_WALLETVIEW_H
-#define RESQ_QT_WALLETVIEW_H
+#ifndef BITCOIN_QT_WALLETVIEW_H
+#define BITCOIN_QT_WALLETVIEW_H
 
 #include "amount.h"
 #include "askpassphrasedialog.h"
@@ -21,6 +21,7 @@ class ClientModel;
 class OverviewPage;
 class ReceiveCoinsDialog;
 class PrivacyDialog;
+class GovernancePage;
 class SendCoinsDialog;
 class SendCoinsRecipient;
 class TransactionView;
@@ -70,6 +71,7 @@ private:
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
     PrivacyDialog* privacyPage;
+    GovernancePage* governancePage;
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;
     MasternodeList* masternodeListPage;
@@ -86,6 +88,8 @@ public slots:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
+    /** Switch to governance page */
+    void gotoGovernancePage();
     /** Switch to masternode page */
     void gotoMasternodePage();
     /** Switch to explorer page */

@@ -982,7 +982,7 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const CoinSpend& spend
     //Reject serial's that are already in the blockchain
     int nHeightTx = 0;
     if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx))
-        return error("%s : zPIV spend with serial %s is already in block %d\n", __func__,
+        return error("%s : zRESQ spend with serial %s is already in block %d\n", __func__,
                      spend.getCoinSerialNumber().GetHex(), nHeightTx);
 
     return true;
@@ -4279,18 +4279,18 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         CTransaction &stakeTxIn = block.vtx[1];
 
         // Inputs
-        std::vector<CTxIn> pivInputs;
-        std::vector<CTxIn> zPIVInputs;
+        std::vector<CTxIn> resqInputs;
+        std::vector<CTxIn> zRESQInputs;
 
         for (CTxIn stakeIn : stakeTxIn.vin) {
             if(stakeIn.scriptSig.IsZerocoinSpend()){
-                zPIVInputs.push_back(stakeIn);
+                zRESQInputs.push_back(stakeIn);
             }else{
-                pivInputs.push_back(stakeIn);
+                resqInputs.push_back(stakeIn);
             }
         }
-        const bool hasPIVInputs = !pivInputs.empty();
-        const bool hasZPIVInputs = !zPIVInputs.empty();
+        const bool hasRESQInputs = !resqInputs.empty();
+        const bool hasZRESQInputs = !zRESQInputs.empty();
 
         // ZC started after PoS.
         // Check for serial double spent on the same block, TODO: Move this to the proper method..
@@ -4310,10 +4310,10 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     }
                 }
                 if(tx.IsCoinStake()) continue;
-                if(hasPIVInputs)
+                if(hasRESQInputs)
                     // Check if coinstake input is double spent inside the same block
-                    for (CTxIn pivIn : pivInputs){
-                        if(pivIn.prevout == in.prevout){
+                    for (CTxIn resqIn : resqInputs){
+                        if(resqIn.prevout == in.prevout){
                             // double spent coinstake input inside block
                             return error("%s: double spent coinstake input inside block", __func__);
                         }
@@ -4349,11 +4349,11 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                 for (CTransaction t : bl.vtx) {
                     for (CTxIn in: t.vin) {
                         // Loop through every input of the staking tx
-                        for (CTxIn stakeIn : pivInputs) {
+                        for (CTxIn stakeIn : resqInputs) {
                             // if it's already spent
 
                             // First regular staking check
-                            if(hasPIVInputs) {
+                            if(hasRESQInputs) {
                                 if (stakeIn.prevout == in.prevout) {
                                     return state.DoS(100, error("%s: input already spent on a previous block", __func__));
                                 }
@@ -4374,9 +4374,9 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             // Split height
             splitHeight = prev->nHeight;
 
-            // Now that this loop if completed. Check if we have zPIV inputs.
-            if(hasZPIVInputs){
-                for (CTxIn zPivInput : zPIVInputs) {
+            // Now that this loop if completed. Check if we have zRESQ inputs.
+            if(hasZRESQInputs){
+                for (CTxIn zPivInput : zRESQInputs) {
                     CoinSpend spend = TxInToZerocoinSpend(zPivInput);
 
                     // First check if the serials were not already spent on the forked blocks.
@@ -4397,7 +4397,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
                     if (!ContextualCheckZerocoinSpendNoSerialCheck(stakeTxIn, spend, pindex, 0))
                         return state.DoS(100,error("%s: forked chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                                   stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zpiv");
+                                                   stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zresq");
 
                     // Now only the ZKP left..
                     // As the spend maturity is 200, the acc value must be accumulated, otherwise it's not ready to be spent
@@ -4440,11 +4440,11 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             }
         } else {
             if(!isBlockFromFork)
-                for (CTxIn zPivInput : zPIVInputs) {
+                for (CTxIn zPivInput : zRESQInputs) {
                         CoinSpend spend = TxInToZerocoinSpend(zPivInput);
                         if (!ContextualCheckZerocoinSpend(stakeTxIn, spend, pindex, 0))
                             return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zpiv");
+                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zresq");
                 }
 
         }
