@@ -1,3 +1,4 @@
+.gitignore
 *.sublime-project
 *.sublime-workspace
 todo.txt
@@ -11,7 +12,6 @@ src/resqd
 src/resq-cli
 src/resq-tx
 src/test/test_resq
-src/test/data/*.json.h
 src/qt/test/test_resq-qt
 
 # autoreconf
@@ -45,6 +45,8 @@ share/setup.nsi
 share/qt/Info.plist
 contrib/devtools/split-debug.sh
 
+src/univalue/gen
+
 src/qt/*.moc
 src/qt/moc_*.cpp
 src/qt/forms/ui_*.h
@@ -62,6 +64,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
+*.patch
 .resq
 *.a
 *.pb.cc
@@ -71,6 +74,7 @@ src/qt/test/moc*.cpp
 *.trs
 *.dmg
 
+*.json.h
 *.raw.h
 
 #libtool object files
@@ -79,6 +83,7 @@ src/qt/test/moc*.cpp
 
 # Compilation and Qt preprocessor part
 *.qm
+Makefile
 resq-qt
 RESQ-Qt.app
 background.tiff*
@@ -115,6 +120,7 @@ qa/pull-tester/run-bitcoind-for-test.sh
 qa/pull-tester/tests-config.sh
 qa/pull-tester/cache/*
 qa/pull-tester/test.*/*
+cache/*
 
 !src/leveldb*/Makefile
 
